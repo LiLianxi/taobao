@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taobao.order.mapper.DisneyHotelOrderMapper">
+
+    <insert id="insertBatchOrder" parameterType="java.util.List" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
+        INSERT INTO
+        tb_disney_hotel_order_temp (object_id,order_id,status)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.objectId},#{item.orderId},#{item.status})
+        </foreach>
+    </insert>
+
+</mapper>
